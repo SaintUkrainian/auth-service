@@ -1,0 +1,24 @@
+server:
+  port: 8081
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:postgresql://localhost:5432/chat-app?useSSL=false&serverTimezone=UTC
+    username: denysmatsenko
+    password: 00zomifi
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: jdbc:postgresql://host.docker.internal:5432/chat-app?useSSL=false&serverTimezone=UTC
+    username: denysmatsenko
+    password: 00zomifi
