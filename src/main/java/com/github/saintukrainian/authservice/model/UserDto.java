@@ -1,5 +1,6 @@
 package com.github.saintukrainian.authservice.model;
 
+import com.github.saintukrainian.authservice.entity.UserImage;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,4 +17,5 @@ public class UserDto {
   private String email;
   private String firstName;
   private String lastName;
+  private UserImage userImage;
 }

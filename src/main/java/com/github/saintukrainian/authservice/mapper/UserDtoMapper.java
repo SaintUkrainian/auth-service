@@ -1,7 +1,9 @@
 package com.github.saintukrainian.authservice.mapper;
 
 import com.github.saintukrainian.authservice.entity.User;
+import com.github.saintukrainian.authservice.entity.UserImage;
 import com.github.saintukrainian.authservice.model.UserDto;
+import com.github.saintukrainian.authservice.utils.ImageUtils;
 import java.util.List;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +23,16 @@ public class UserDtoMapper {
         .username(user.getUsername())
         .firstName(user.getFirstName())
         .lastName(user.getLastName())
+        .userImage(decompressUserImage(user))
         .build();
+  }
+
+  private static UserImage decompressUserImage(User user) {
+    UserImage userImage = user.getUserImage();
+    if (userImage == null) {
+      return null;
+    }
+    userImage.setData(ImageUtils.decompress(user.getUserImage().getData()));
+    return userImage;
   }
 }
